@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Sqlite" id="Project-260d" database="Sqlite" >
+	<schema name="Default" >
+		<table name="alunos" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="nome" type="VARCHAR" length="100" jt="12" />
+			<column name="idade" type="INTEGER" jt="4" />
+			<column name="turma_id" type="INTEGER" jt="4" />
+			<index name="pk_alunos" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="Fk" to_schema="Default" to_table="turmas" options="" >
+				<fk_column name="turma_id" pk="id" />
+			</fk>
+		</table>
+		<table name="andares" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="numero" type="INTEGER" jt="4" />
+			<column name="bloco_id" type="INTEGER" jt="4" />
+			<index name="pk_andares" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="Fk" to_schema="Default" to_table="blocos" options="" >
+				<fk_column name="bloco_id" pk="id" />
+			</fk>
+		</table>
+		<table name="aulas" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="data_inicio" type="DATE" jt="91" />
+			<column name="data_fim" type="DATE" jt="91" />
+			<column name="sala_id" type="INTEGER" jt="4" />
+			<column name="professor_id" type="INTEGER" jt="4" />
+			<column name="materia_id" type="INTEGER" jt="4" />
+			<column name="turma_id" type="INTEGER" jt="4" />
+			<index name="pk_aulas" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="Fk" to_schema="Default" to_table="salas" options="" >
+				<fk_column name="sala_id" pk="id" />
+			</fk>
+			<fk name="Fk" to_schema="Default" to_table="professores" options="" >
+				<fk_column name="professor_id" pk="id" />
+			</fk>
+			<fk name="Fk" to_schema="Default" to_table="materias" options="" >
+				<fk_column name="materia_id" pk="id" />
+			</fk>
+			<fk name="Fk" to_schema="Default" to_table="turmas" options="" >
+				<fk_column name="turma_id" pk="id" />
+			</fk>
+		</table>
+		<table name="blocos" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="letra" type="VARCHAR" length="1" jt="12" />
+			<index name="pk_blocos" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="cursos" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="nome" type="VARCHAR" length="100" jt="12" />
+			<column name="quantidade_de_periodos" type="INTEGER" jt="4" />
+			<index name="pk_cursos" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="materias" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="nome" type="VARCHAR" length="100" jt="12" />
+			<column name="carga_horaria" type="INTEGER" jt="4" />
+			<index name="pk_materias" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="professores" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="nome" type="VARCHAR" length="100" jt="12" />
+			<column name="idade" type="INTEGER" jt="4" />
+			<index name="pk_professores" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="salas" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="numero" type="INTEGER" jt="4" />
+			<column name="andar_id" type="INTEGER" jt="4" />
+			<column name="capacidade" type="INTEGER" jt="4" />
+			<index name="pk_salas" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="Fk" to_schema="Default" to_table="andares" options="" >
+				<fk_column name="andar_id" pk="id" />
+			</fk>
+		</table>
+		<table name="turmas" spec="" >
+			<column name="id" type="VARCHAR" jt="12" />
+			<column name="ano_de_inicio" type="INTEGER" jt="4" />
+			<column name="semestre_atual" type="INTEGER" jt="4" />
+			<column name="curso_id" type="INTEGER" jt="4" />
+			<index name="pk_turmas" unique="UNIQUE_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="Fk" to_schema="Default" to_table="cursos" options="" >
+				<fk_column name="curso_id" pk="id" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="Sqlite" database="Sqlite" driver_class="org.sqlite.JDBC" driver_jar="sqlite-jdbc-3.36.0.3.jar" driver_desc="Standard" host="localhost" port="7210" instance="G:/My Drive/PERSONAL/testing/sql-testing/college-database-example/banco.db" />
+	<layout name="Main Layout" id="Layout-a9a" show_relation="columns" >
+		<entity schema="Default" name="alunos" color="BED3F4" x="608" y="432" />
+		<entity schema="Default" name="andares" color="C7F4BE" x="416" y="80" />
+		<entity schema="Default" name="aulas" color="F4DDBE" x="48" y="160" />
+		<entity schema="Default" name="blocos" color="C7F4BE" x="576" y="160" />
+		<entity schema="Default" name="cursos" color="BED3F4" x="576" y="608" />
+		<entity schema="Default" name="materias" color="F4DDBE" x="240" y="160" />
+		<entity schema="Default" name="professores" color="F4DDBE" x="256" y="400" />
+		<entity schema="Default" name="salas" color="C7F4BE" x="416" y="256" />
+		<entity schema="Default" name="turmas" color="BED3F4" x="416" y="432" />
+		<group name="salas" color="EEF7EC" >
+			<entity schema="Default" name="salas" />
+			<entity schema="Default" name="andares" />
+			<entity schema="Default" name="blocos" />
+		</group>
+		<group name="turmas" color="ECF0F7" >
+			<entity schema="Default" name="turmas" />
+			<entity schema="Default" name="alunos" />
+			<entity schema="Default" name="cursos" />
+		</group>
+		<group name="aulas" color="F7F2EC" >
+			<entity schema="Default" name="aulas" />
+			<entity schema="Default" name="professores" />
+			<entity schema="Default" name="materias" />
+		</group>
+	</layout>
+	<layout name="~Layout with Sample Tools" id="Layout-1523" show_column_type="y" show_relation="columns" >
+		<entity schema="Default" name="alunos" color="BED3F4" x="832" y="544" />
+		<entity schema="Default" name="andares" color="C7F4BE" x="576" y="48" />
+		<entity schema="Default" name="aulas" color="F4DDBE" x="48" y="48" />
+		<entity schema="Default" name="blocos" color="C7F4BE" x="576" y="240" />
+		<entity schema="Default" name="cursos" color="BED3F4" x="832" y="752" />
+		<entity schema="Default" name="materias" color="F4DDBE" x="288" y="48" />
+		<entity schema="Default" name="professores" color="F4DDBE" x="288" y="304" />
+		<entity schema="Default" name="salas" color="C7F4BE" x="800" y="48" />
+		<entity schema="Default" name="turmas" color="BED3F4" x="576" y="544" />
+		<script name="SQL Editor" id="Editor-23f6" language="SQL" >
+			<string><![CDATA[SELECT id, data_inicio, data_fim, sala_id, professor_id, materia_id, turma_id
+FROM
+	aulas s;]]></string>
+		</script>
+		<browser id="Browse-1cdb" name="Relational Data Explorer" confirm_updates="y" >
+			<browse_table schema="Default" entity="aulas" x="20" y="20" width="400" height="300" >
+				<browse_table schema="Default" entity="turmas" fk="Fk" x="440" y="20" width="500" height="350" record_view="y" >
+					<browse_table schema="Default" entity="alunos" fk="Fk" x="960" y="20" width="500" height="350" />
+				</browse_table>
+			</browse_table>
+		</browser>
+		<query id="Query-bbe" name="Query Builder" >
+			<query_table schema="Default" name="aulas" alias="a" x="48" y="48" >
+				<column name="id" />
+				<column name="data_inicio" />
+				<column name="data_fim" />
+				<column name="sala_id" />
+				<column name="professor_id" />
+				<column name="materia_id" />
+				<column name="turma_id" />
+				<query_table schema="Default" name="turmas" alias="t" x="224" y="48" fk="Fk" type="Inner Join" >
+					<column name="id" />
+					<column name="ano_de_inicio" />
+					<column name="semestre_atual" />
+					<column name="curso_id" />
+					<query_table schema="Default" name="alunos" alias="a1" x="400" y="48" fk="Fk" type="Inner Join" >
+						<column name="id" />
+						<column name="nome" />
+						<column name="idade" />
+						<column name="turma_id" />
+					</query_table>
+				</query_table>
+			</query_table>
+		</query>
+		<form name="Report" id="Report-1299" template="Page" css="container-fluid" view="frame" >
+			<var name="samplePageNumber" type="4" value="0" mandatory="n" />
+			<var name="sampleRecordsPerPage" type="4" value="100" mandatory="n" />
+			<body name="Body" template="Grid" pos="0,0,0,0,f,f" layout="{{-2,-2,-2,-2,-1},{-2,-2,-2,-2}}" scroll="n" html="n" >
+				<cell type="label" name="Aulas Data" template="H3" pos="0,0,1,0,l,c" />
+				<cell type="chart" name="Pie" template="Pie" pos="0,1,4,1,l,c" max_records="20" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="id" />
+						<var name="data_inicio" type="91" />
+						<var name="data_fim" type="91" />
+						<var name="sala_id" type="4" />
+						<var name="professor_id" type="4" />
+						<var name="materia_id" type="4" />
+						<var name="turma_id" type="4" />
+						<script ><![CDATA[SELECT * FROM aulas]]></script>
+					</form_script>
+					<param name="i0" value="id" />
+					<param name="width" value="100%" />
+					<param name="v0" value="sala_id" />
+					<param name="title" value="Sample Chart" />
+					<param name="height" value="400px" />
+				</cell>
+				<tableview name="sample" template="Table" css="table table-striped table-sm table-hover" pos="0,2,4,2,f,f" layout="{{-2,-2,-2,-2,-2,-2,-2},{-2,-2}}" scroll="n" html="n" header_rows="1" >
+					<form_script type="DataSource" language="SQL" >
+						<var name="id" />
+						<var name="data_inicio" type="91" />
+						<var name="data_fim" type="91" />
+						<var name="sala_id" type="4" />
+						<var name="professor_id" type="4" />
+						<var name="materia_id" type="4" />
+						<var name="turma_id" type="4" />
+						<script ><![CDATA[SELECT * FROM aulas]]></script>
+					</form_script>
+					<cell type="label" name="id" pos="0,0,0,0,c,c" />
+					<cell type="label" name="data_inicio" pos="1,0,1,0,c,c" />
+					<cell type="label" name="data_fim" pos="2,0,2,0,c,c" />
+					<cell type="label" name="sala_id" pos="3,0,3,0,c,c" />
+					<cell type="label" name="professor_id" pos="4,0,4,0,c,c" />
+					<cell type="label" name="materia_id" pos="5,0,5,0,c,c" />
+					<cell type="label" name="Button can open other pages." pos="6,0,6,0,c,c" />
+					<cell type="label" name="${id}" template="Plain" pos="0,1,0,1,l,c" />
+					<cell type="label" name="${data_inicio}" template="Plain" pos="1,1,1,1,l,c" />
+					<cell type="label" name="${data_fim}" template="Plain" pos="2,1,2,1,l,c" />
+					<cell type="label" name="${sala_id}" template="Plain" pos="3,1,3,1,l,c" />
+					<cell type="label" name="${professor_id}" template="Plain" pos="4,1,4,1,l,c" />
+					<cell type="label" name="${materia_id}" template="Plain" pos="5,1,5,1,l,c" />
+					<cell type="button" name="More" template="Plain" css="btn btn-default btn-success" pos="6,1,6,1,c,c" ref_id="Report-1299" />
+				</tableview>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="0,3,0,3,l,c" glyph="FA-ANGLE_DOUBLE_LEFT" ref_id="Report-1299" >
+					<var name="samplePageNumber" value="0" />
+				</cell>
+				<cell type="href" name="" disabled="${samplePageNumber&lt;1}" pos="1,3,1,3,l,c" glyph="FA-ANGLE_LEFT" ref_id="Report-1299" >
+					<var name="samplePageNumber" value="${Math.max(0,samplePageNumber-1)}" />
+				</cell>
+				<cell type="label" name="Page ${samplePageNumber+1}" pos="2,3,2,3,l,c" />
+				<cell type="href" name="" disabled="${!sampleHasNextPage}" pos="3,3,3,3,l,c" glyph="FA-ANGLE_RIGHT" ref_id="Report-1299" >
+					<var name="samplePageNumber" value="${( samplePageNumber+1 )}" />
+				</cell>
+			</body>
+		</form>
+	</layout>
+</project>
